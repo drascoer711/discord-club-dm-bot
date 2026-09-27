@@ -16,7 +16,7 @@ if (!TOKEN || !CLIENT_ID) {
 }
 
 const command = new SlashCommandBuilder()
-  .setName('clubannounce')
+  .setName('dmall')
   .setDescription('Post a club announcement in the current channel.')
   .addStringOption((option) =>
     option
@@ -31,7 +31,7 @@ const rest = new REST({ version: '10' }).setToken(TOKEN);
   await rest.put(Routes.applicationCommands(CLIENT_ID), {
     body: [command.toJSON()],
   });
-  console.log('Registered /clubannounce.');
+  console.log('Registered /dmall.');
 })();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -41,7 +41,7 @@ client.once('ready', () => {
 });
 
 client.on('interactionCreate', async (interaction) => {
-  if (!interaction.isChatInputCommand() || interaction.commandName !== 'clubannounce') {
+  if (!interaction.isChatInputCommand() || interaction.commandName !== 'dmall') {
     return;
   }
 
